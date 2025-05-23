@@ -9,12 +9,18 @@ export interface AlertProps {
   createdAt: Date;
 }
 export class Alert {
+  private _id: string;
   private props: AlertProps;
   constructor(props: Replace<AlertProps, { createdAt?: Date }>) {
+    this._id = crypto.randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
     };
+  }
+
+  public get id() {
+    return this._id;
   }
 
   public set recipientId(recipientId: string) {
@@ -39,5 +45,13 @@ export class Alert {
 
   public get category() {
     return this.props.category;
+  }
+
+  public get readAt(): Date | null | undefined {
+    return this.props.readAt;
+  }
+
+  public set readAt(readAt: Date | null) {
+    this.props.readAt = readAt;
   }
 }

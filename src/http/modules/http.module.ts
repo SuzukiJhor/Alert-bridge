@@ -1,9 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AlertsController } from 'src/http/controller/app.controller';
+import { DatabaseModule } from 'src/service/modules/database.module';
+import { ExecuteAlert } from 'src/use-cases/execute-alert';
 
 @Module({
-  imports: [],
+  imports: [DatabaseModule],
   controllers: [AlertsController],
-  providers: [],
+  providers: [ExecuteAlert],
 })
 export class HttpModule {}

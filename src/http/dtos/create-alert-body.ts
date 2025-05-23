@@ -1,11 +1,11 @@
-import { IsNotEmpty, IsUUID, IsString } from 'class-validator';
+import { IsNotEmpty, IsUUID, IsString, Length } from 'class-validator';
 export class CreateAlertBody {
   @IsNotEmpty()
   @IsUUID()
   recipientId: string;
 
   @IsNotEmpty()
-  @IsString()
+  @Length(5, 240)
   content: string;
 
   @IsNotEmpty()

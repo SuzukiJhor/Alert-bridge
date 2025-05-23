@@ -1,12 +1,19 @@
 import { Body, Controller, Post } from '@nestjs/common';
-import { PrismaService } from '../../service/prisma/prisma.service';
 import { CreateAlertBody } from '../dtos/create-alert-body';
+import { ExecuteAlert } from 'src/use-cases/execute-alert';
 
 @Controller('alert')
 export class AlertsController {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private executeAlert: ExecuteAlert) {}
+
   @Post()
-  create(@Body() data: CreateAlertBody) {
+  async create(@Body() data: CreateAlertBody) {
     const { recipientId, content, category } = data;
+    const { alert } = await this.executeAlert.execute({
+      recipientId,
+      content,
+      category,
+    });
+    return { alert };
   }
 }
