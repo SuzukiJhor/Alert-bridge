@@ -1,5 +1,6 @@
 import { Alert } from 'src/entities/alert';
 import { Content } from 'src/entities/content';
+import { AlertRepository } from 'src/repositories/alert-repositories';
 
 interface ExecuteAlertRequest {
   recipientId: string;
@@ -12,13 +13,15 @@ interface ExecuteAlertResponse {
 }
 
 export class ExecuteAlert {
-  execute(request: ExecuteAlertRequest): ExecuteAlertResponse {
+  constructor(private alertRepository: AlertRepository) {}
+  async execute(request: ExecuteAlertRequest): Promise<ExecuteAlertResponse> {
     const { recipientId, content, category } = request;
     const alert = new Alert({
       recipientId,
       content: new Content(content),
       category,
     });
+    await this.alertRepository.create(alert);
     return { alert };
   }
 }
