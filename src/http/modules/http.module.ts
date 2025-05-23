@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { AlertsController } from 'src/controller/app.controller';
+import { AlertsController } from 'src/http/controller/app.controller';
 
 @Module({
   imports: [],
