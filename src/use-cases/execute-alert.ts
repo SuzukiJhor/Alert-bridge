@@ -1,6 +1,6 @@
 import { Alert } from 'src/entities/alert';
 import { Content } from 'src/entities/content';
-import { AlertRepository } from 'src/repositories/alert-repositories';
+import { AlertRepository } from 'src/repositories/alert-repository';
 
 interface ExecuteAlertRequest {
   recipientId: string;
