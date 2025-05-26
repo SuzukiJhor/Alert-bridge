@@ -16,6 +16,7 @@ model Alert {
   recipientId String
   content String
   category String
+  canceledAt DateTime?
   readAt DateTime?
   createdAt DateTime @default(now())
 

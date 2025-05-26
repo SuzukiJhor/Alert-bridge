@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { CreateAlertBody } from '../dtos/create-alert-body';
 import { ExecuteAlert } from 'src/use-cases/execute-alert';
+import { AlertViewModel } from '../view-models/alertViewModel';
 
 @Controller('alert')
 export class AlertsController {
@@ -14,6 +15,7 @@ export class AlertsController {
       content,
       category,
     });
-    return { alert };
+    const view = AlertViewModel.toHTTP(alert);
+    return { Alert: view };
   }
 }
