@@ -12,8 +12,8 @@ export interface AlertProps {
 export class Alert {
   private _id: string;
   private props: AlertProps;
-  constructor(props: Replace<AlertProps, { createdAt?: Date }>) {
-    this._id = crypto.randomUUID();
+  constructor(props: Replace<AlertProps, { createdAt?: Date }>, id?: string) {
+    this._id = id ?? crypto.randomUUID();
     this.props = {
       ...props,
       createdAt: props.createdAt ?? new Date(),
