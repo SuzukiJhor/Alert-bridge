@@ -52,8 +52,11 @@ export class Alert {
     return this.props.readAt;
   }
 
-  public set readAt(readAt: Date | null) {
-    this.props.readAt = readAt;
+  public read() {
+    this.props.readAt = new Date();
+  }
+  public unRead() {
+    this.props.readAt = null;
   }
 
   public get createdAt(): Date {
