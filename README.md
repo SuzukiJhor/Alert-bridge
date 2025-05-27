@@ -2,6 +2,6 @@
 <br/>
 ## License
 
-Nest is MIT Licensed
+this Nest project is MIT Licensed
 <br/>
  [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
