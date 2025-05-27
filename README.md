@@ -9,6 +9,6 @@
  - Factory Pattern para criação flexível de canais de notificação
 ## License
 
-this Nest project is MIT Licensed
+Projeto Nest é licenciado pelo MIT
 <br/>
  [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
