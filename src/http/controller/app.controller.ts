@@ -7,6 +7,13 @@ import { AlertViewModel } from '../view-models/alertViewModel';
 export class AlertsController {
   constructor(private executeAlert: ExecuteAlert) {}
 
+  // @Path(':id/cancel')
+  // async cancel(
+  //   @Params('id') id: string
+  // ) {
+  //   const { count } = await this.
+  // }
+
   @Post()
   async create(@Body() data: CreateAlertBody) {
     const { recipientId, content, category } = data;
