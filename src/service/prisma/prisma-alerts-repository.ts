@@ -8,6 +8,16 @@ import { PrismaAlertMapper } from '../mappers/prisma-alert-mapper';
 export class PrismaAlertsRepository implements AlertRepository {
   constructor(private prismaService: PrismaService) {}
 
+  async findManyByRecipientId(recipientId: string): Promise<Alert[]> {
+    const alerts = await this.prismaService.alert.findMany({
+      where: { recipientId: recipientId, canceledAt: null },
+      orderBy: { createdAt: 'desc' },
+    });
+    return alerts.map((alerts) => {
+      return PrismaAlertMapper.toDomain(alerts);
+    });
+  }
+
   async findById(alertid: string): Promise<Alert | null> {
     const alert = await this.prismaService.alert.findUnique({
       where: { id: alertid },
