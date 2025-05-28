@@ -17,7 +17,6 @@ export class PrismaAlertsRepository implements AlertRepository {
       return PrismaAlertMapper.toDomain(alerts);
     });
   }
-
   async findById(alertid: string): Promise<Alert | null> {
     const alert = await this.prismaService.alert.findUnique({
       where: { id: alertid },
@@ -25,7 +24,6 @@ export class PrismaAlertsRepository implements AlertRepository {
     if (!alert) return null;
     return PrismaAlertMapper.toDomain(alert);
   }
-
   async save(alert: Alert): Promise<void> {
     const raw = PrismaAlertMapper.toPrisma(alert);
     await this.prismaService.alert.update({
@@ -39,7 +37,6 @@ export class PrismaAlertsRepository implements AlertRepository {
     });
     return count;
   }
-
   async create(alert: Alert): Promise<void> {
     const raw = PrismaAlertMapper.toPrisma(alert);
     await this.prismaService.alert.create({ data: raw });
